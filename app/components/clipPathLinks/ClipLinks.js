@@ -107,11 +107,6 @@ const LinkBox = ({text, href, image}) => {
                 <Image src={`/${image}-dark.svg`} alt={image} width={80} height={80} />
             </div>
             <div ref={scope} style={{clipPath: BOTTOM_RIGHT_CLIP}} className="absolute inset-0 grid place-content-center bg-neutral-900">
-                <div className='z-10 absolute inset-0'>
-                    <svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet" style={{width: '100%', height: '100%'}}>
-                        <text x="50" y="50" fill="white" fillOpacity="0.2" textAnchor="middle" dominantBaseline="middle" fontSize="20">{text}</text>
-                    </svg>
-                </div>
                 <div className='z-20'>
                     <Image src={`/${image}.svg`} alt={image} width={120} height={120} />
                 </div>
