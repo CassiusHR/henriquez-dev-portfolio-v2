@@ -13,7 +13,7 @@ const HeroSection = () => {
                 style={{ height: '100vh', width: '100%' }}
             >
                 <directionalLight />
-                <OrbitControls maxDistance={20} minDistance={10} enableZoom={false} enableRotate={false} enablePan={false}/>
+                <OrbitControls enableZoom={false} enableRotate={false} enablePan={false}/>
                 <pointLight position={[-30, -1, -30]} power={10} />
                 <PointCircle />
             </Canvas>
