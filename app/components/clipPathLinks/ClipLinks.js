@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export const ClipLinks = () => {
     return (
-        <div className=" bg-neutral-50 px-0 py-12 w-full">
+        <div className=" bg-neutral-50 px-0 py-0 w-full">
             <div className="w-full">
                 <ClipPathLinks />
             </div>

@@ -19,7 +19,7 @@ export default function RootLayout({ children }) {
             <body
                 className={`${geistSans.variable} antialiased`}
             >
-                <div className="container mx-auto flex flex-col items-center justify-start mt-2 sm:border-stone-900 sm:border sm:border-solid sm:rounded-3xl overflow-hidden">
+                <div className="relative container mx-auto flex flex-col items-center justify-start mt-2 sm:border-stone-900 sm:border sm:border-solid sm:rounded-3xl overflow-hidden">
                     <Navbar />
                     {children}
                 </div>
