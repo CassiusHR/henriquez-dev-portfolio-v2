@@ -30,7 +30,7 @@ export const SectionSeparator = () => {
     const TextMarquee = () => {
         return (
             <div style={{ overflow: "hidden", whiteSpace: "nowrap" }}>
-                <motion.div
+                {/* <motion.div
                     ref={marqueeRef}
                     style={{ display: "flex" }}
                     variants={marqueeVariants}
@@ -41,7 +41,7 @@ export const SectionSeparator = () => {
                             [ CASE STUDIES ]
                         </span>
                     ))}
-                </motion.div>
+                </motion.div> */}
             </div>  
         );
     };
