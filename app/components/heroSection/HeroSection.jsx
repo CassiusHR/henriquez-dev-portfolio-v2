@@ -10,7 +10,7 @@ const HeroSection = () => {
             <Canvas 
                 camera={{ position: [10, 7.5, 5] }}
                 className="bg-[rgb(250,250,250)]" 
-                style={{ height: '100vh', width: '100%', touchAction: 'auto !important' }}
+                style={{ height: '100vh', width: '100%', touchAction: 'auto !important', pointerEvents: 'none' }}
             >
                 <directionalLight />
                 <OrbitControls enableZoom={false} enableRotate={false} enablePan={false}/>
