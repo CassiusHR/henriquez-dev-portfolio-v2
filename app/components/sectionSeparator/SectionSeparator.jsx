@@ -1,31 +1,9 @@
 'use client';
 import Image from "next/image";
 import {motion} from 'framer-motion';
-import { useRef, useState, useEffect } from 'react';
 
 export const SectionSeparator = () => {
-    const marqueeRef = useRef(null);
-    const [marqueeWidth, setMarqueeWidth] = useState(0);
 
-    useEffect(() => {
-        if (marqueeRef.current) {
-            setMarqueeWidth(marqueeRef.current.offsetWidth);
-        }
-    }, []);
-
-    const marqueeVariants = {
-        animate: {
-            x: [0, -marqueeWidth / 4 ],
-            transition: {
-                x: {
-                    repeat: Infinity,
-                    repeatType: "loop",
-                    duration: 15,
-                    ease: "linear",
-                },
-            },
-        },
-    };
 
     const TextMarquee = () => {
         return (

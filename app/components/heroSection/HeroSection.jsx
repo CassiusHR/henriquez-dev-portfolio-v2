@@ -1,7 +1,7 @@
 'use client';
 import { OrbitControls, Sphere } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useRef } from "react";
+import { useRef, Suspense } from "react";
 import { pointsInner, pointsOuter } from "../threeD/utils";
 
 const HeroSection = () => {
@@ -12,10 +12,13 @@ const HeroSection = () => {
                 className="bg-[rgb(250,250,250)]" 
                 style={{ height: '100vh', width: '100%', touchAction: 'auto !important', pointerEvents: 'none' }}
             >
-                <directionalLight />
-                <OrbitControls enableZoom={false} enableRotate={false} enablePan={false}/>
-                <pointLight position={[-30, -1, -30]} power={10} />
-                <PointCircle />
+                
+                <Suspense fallback={<div>Loading...</div>}>
+                    <directionalLight />
+                    <OrbitControls enableZoom={false} enableRotate={false} enablePan={false}/>
+                    <pointLight position={[-30, -1, -30]} power={10} />
+                    <PointCircle />
+                </Suspense>
             </Canvas>
         </div>
 
