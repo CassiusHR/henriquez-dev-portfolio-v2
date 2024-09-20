@@ -30,8 +30,9 @@ const HeroSection = () => {
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
+    let interval;
     if (progress === 100) {
-      const interval = setInterval(() => {
+      interval = setInterval(() => {
         setCurrentTextIndex((prevIndex) => {
           if (prevIndex < texts.length - 1) {
             return prevIndex + 1;
@@ -40,9 +41,12 @@ const HeroSection = () => {
           return prevIndex;
         });
       }, 3000);
-
-      return () => clearInterval(interval);
     }
+
+    // Cleanup function
+    return () => {
+      if (interval) clearInterval(interval);
+    };
   }, [progress]);
 
 
