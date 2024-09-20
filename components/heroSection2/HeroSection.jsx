@@ -2,7 +2,7 @@
 import { Canvas} from "@react-three/fiber";
 import { Environment, Html, useProgress } from '@react-three/drei';
 import Model from "./Model";
-import {useEffect} from "react";
+import {useEffect, useState} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Scene = () => {
@@ -19,20 +19,45 @@ const Scene = () => {
   );
 };
 
+const texts = [
+  `Hola!`,
+  `I'm Carlos`,
+  `Let's build cool stuff :)`
+];
+
 const HeroSection = () => {
   const { progress } = useProgress();
+  const [currentTextIndex, setCurrentTextIndex] = useState(0);
 
   useEffect(() => {
-    console.log(progress);
+    if (progress === 100) {
+      const interval = setInterval(() => {
+        setCurrentTextIndex((prevIndex) => {
+          if (prevIndex < texts.length - 1) {
+            return prevIndex + 1;
+          }
+          clearInterval(interval);
+          return prevIndex;
+        });
+      }, 3000);
+
+      return () => clearInterval(interval);
+    }
   }, [progress]);
 
 
   return (
     <div className="relative h-screen w-full">
       <AnimatePresence mode="wait">
-        {progress == 100 && <motion.div initial={{opacity: 0}} animate={{opacity: 1, transition: {duration: 0.7, delay: 0.5}}} className="absolute top-1/2 left-0 h-[200px] w-[500px] bg-red-500 z-50 py-5 px-10">
-          <h2 className="text-white text-4xl font-bold">Hello</h2>
-        </motion.div>}
+        {progress === 100 && (
+          <motion.h2 key={currentTextIndex}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.5 }} className="absolute top-1/2 left-8 z-50 text-black text-4xl font-bold">{texts[currentTextIndex]}</motion.h2>
+        )}
+      </AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div key="canvas" initial={{opacity: 0}} animate={{opacity: 1, transition: {duration: 0.7}}} style={{ height: '100vh', width: '100%' }}>
           <Scene />
         </motion.div>
