@@ -26,7 +26,7 @@ const Column = ({images = [], y = 0, offset = 0, isInView = false}) => {
 
       {
         images.map((image, index) => (
-          <div key={index} className={clsx('relative w-full h-full rounded-2xl overflow-hidden my-4 min-h-[200px]', offset == 1 && 'top-[-45%]', offset == 2 && 'top-[-95%]', offset == 3 && 'top-[-75%]')} style={{transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s'}}>
+          <div key={index} className={clsx('relative w-full h-full rounded-2xl overflow-hidden my-4 min-h-[200px]', offset == 1 && 'top-[-45%]', offset == 2 && 'top-[-95%]', offset == 3 && 'top-[-45%]')} style={{transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s'}}>
             <Image src={image} alt="image" fill />
           </div>
 
@@ -78,16 +78,12 @@ export const SectionSeparator = () => {
 
   const { height } = dimension;
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 1.4]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.7]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
 
   return (
-    <div ref={container} className="relative w-full h-[800px] grid place-items-center overflow-hidden">
-      <div className="absolute top-0 left-0 w-full h-full bg-white z-10 grid place-items-center" style={{opacity: isInView ? 0.9 : 0, transition: "all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s"}}>
-        <h2 ref={overlay} className="text-8xl font-bold">{`[   W O R K   ]`}</h2>
-      </div>
-
+    <div ref={container} className="relative w-full h-100vh grid place-items-center overflow-hidden">
       <div className="relative w-full h-[175vh] min-h-[175vh] flex gap-4 p-4 box-sizing-border overflow-hidden">
         <Column images={images.slice(0, 3)} y={y} offset={1} isInView={isInView}/>
         <Column images={images.slice(3, 6)} y={y2} offset={2} isInView={isInView}/> 
