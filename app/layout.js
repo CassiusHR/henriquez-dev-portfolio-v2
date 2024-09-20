@@ -2,7 +2,8 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/navbar/Navbar";
+
 
 const geistSans = localFont({
   src: "./fonts/NeueMontreal-Light.woff2",

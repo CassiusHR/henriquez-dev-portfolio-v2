@@ -19,7 +19,16 @@ export default function Model() {
   return (
     <group scale={viewport.width / 3} >
       <mesh ref={logo} {...nodes.Curve001} position={[1, 0, 0]} scale={12}>
-        <MeshTransmissionMaterial thickness={1} transmission={1} ior={1.6} chromaticAberration={0.05} opacity={0.2}/>
+        <MeshTransmissionMaterial backside
+          backsideThickness={1}
+          samples={16}
+          thickness={0.2}
+          anisotropicBlur={0.1}
+          iridescence={1}
+          iridescenceIOR={1}
+          iridescenceThicknessRange={[0, 1400]}
+          clearcoat={1}
+          envMapIntensity={0.5}/>
       </mesh>
     </group>
   );
