@@ -22,7 +22,7 @@ const Scene = () => {
 const texts = [
   `Hola!`,
   `I'm Carlos`,
-  `Let's build cool stuff :)`
+  `Let's build cool stuff 😎`
 ];
 
 const HeroSection = () => {
