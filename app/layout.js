@@ -11,7 +11,7 @@ const geistSans = localFont({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://acme.com'),
+  metadataBase: new URL('https://henriquez.dev'),
   title: "Henriquez.dev",
   description: "Henriquez.dev",
   generator: 'Next.js',
