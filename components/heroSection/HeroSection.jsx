@@ -21,8 +21,6 @@ const HeroSection = () => {
         </Suspense>
       </Canvas>
     </div>
-
-
   );
 };
 
@@ -43,9 +41,6 @@ const PointCircle = () => {
       ))}
     </group>
   );
-
-
-
 };
 
 const Point = ({position, color}) => {
