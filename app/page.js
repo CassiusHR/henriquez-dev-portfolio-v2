@@ -11,9 +11,9 @@ export default function Home() {
 
   return (
     <div className="w-full font-[family-name:var(--font-geist-sans)]">
-      {/* <div className="h-screen w-full">
-        <HeroSection />
-      </div> */}
+      <div className="h-screen w-full">
+        
+      </div>
       <ClipLinks />
       <SectionSeparator />
       <CaseStudiesLinks />

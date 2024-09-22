@@ -20,9 +20,9 @@ const images = [
   "/work/wom3.webp",
 ];
 
-const Column = ({images = [], y = 0, offset = 0, isInView = false}) => {
+const Column = ({images = [], y = 0, offset = 0, isInView = false, hidden = false}) => {
   return (
-    <motion.div style={{y}} className="relative h-full w-1/2 sm:w-1/3 flex flex-col gap-4">
+    <motion.div style={{y}} className={clsx('relative h-full w-1/2 sm:w-1/3 flex flex-col gap-4',hidden && 'hidden')}>
 
       {
         images.map((image, index) => (
@@ -47,28 +47,6 @@ export const SectionSeparator = () => {
 
   const [dimension, setDimension] = useState({width:0, height:0});
 
-  useEffect(() => {
-    const lenis = new Lenis();
-
-    function raf(time) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
-    requestAnimationFrame(raf);
-
-    const resize = () => {
-      setDimension({width: window.innerWidth, height: window.innerHeight});
-    };
-
-    window.addEventListener("resize", resize);
-    requestAnimationFrame(raf);
-    resize();
-
-    return () => {
-      window.removeEventListener("resize", resize);
-    };
-  }, []);
-
 
   const {scrollYProgress} = useScroll({
     target: container,
@@ -76,18 +54,16 @@ export const SectionSeparator = () => {
     offset: ['start end', 'end start']
   });
 
-  const { height } = dimension;
-
-  const y = useTransform(scrollYProgress, [0, 1], [0, height * 2]);
-  const y2 = useTransform(scrollYProgress, [0, 1], [0, height * 3.3]);
-  const y3 = useTransform(scrollYProgress, [0, 1], [0, height * 1.25]);
+  const y = useTransform(scrollYProgress, [0, 1], [0, 800 * 2]);
+  const y2 = useTransform(scrollYProgress, [0, 1], [0, 800 * 3.3]);
+  const y3 = useTransform(scrollYProgress, [0, 1], [0, 800 * 1.25]);
 
   return (
     <div ref={container} className="relative w-full h-100vh grid place-items-center overflow-hidden">
       <div className="relative w-full h-[175vh] min-h-[175vh] flex gap-4 p-4 box-sizing-border overflow-hidden">
-        <Column images={images.slice(0, 3)} y={y} offset={1} isInView={isInView}/>
+        <Column images={images.slice(0, 3)} y={y} offset={1} isInView={isInView} hidden={true}/>
         <Column images={images.slice(3, 6)} y={y2} offset={2} isInView={isInView}/> 
-        <Column images={images.slice(6, 9)} y={y3} offset={3} isInView={isInView}/>
+        <Column images={images.slice(6, 9)} y={y3} offset={3} isInView={isInView} hidden={true}/>
       </div>
     </div>
   );
