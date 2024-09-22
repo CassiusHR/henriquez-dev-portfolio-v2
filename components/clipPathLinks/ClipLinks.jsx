@@ -1,6 +1,6 @@
 'use client';
-import React from 'react';
-import {useAnimate} from 'framer-motion';
+import React, { useCallback, useMemo } from 'react';
+import { useAnimate } from 'framer-motion';
 import Image from 'next/image';
 
 export const ClipLinks = () => {
@@ -55,62 +55,53 @@ const EXIT_KEYFRAMES = {
   top: [NO_CLIP, TOP_LEFT_CLIP]
 };
 
-
-const LinkBox = ({text, href, image}) => {
+const LinkBox = React.memo(({ text, href, image }) => {
   const [scope, animate] = useAnimate();
 
-  const handleMouseEnter = (e) => {
+  const getNeartestSide = useCallback((e) => {
+    const box = e.currentTarget.getBoundingClientRect();
+    const { clientX, clientY } = e;
+
+    const distances = [
+      { side: 'left', distance: Math.abs(box.left - clientX) },
+      { side: 'right', distance: Math.abs(box.right - clientX) },
+      { side: 'top', distance: Math.abs(box.top - clientY) },
+      { side: 'bottom', distance: Math.abs(box.bottom - clientY) },
+    ];
+
+    return distances.reduce((nearest, current) => 
+      current.distance < nearest.distance ? current : nearest).side;
+  }, []);
+
+  const handleMouseEnter = useCallback((e) => {
     const side = getNeartestSide(e);
-    animate(scope.current, {clipPath: ENTRANCE_KEYFRAMES[side]});
-  };
-  const handleMouseLeave = (e) => {
+    animate(scope.current, { clipPath: ENTRANCE_KEYFRAMES[side] }, { duration: 0.3 });
+  }, [animate, getNeartestSide, scope]);
+
+  const handleMouseLeave = useCallback((e) => {
     const side = getNeartestSide(e);
-    animate(scope.current, {clipPath: EXIT_KEYFRAMES[side]});
-  };
+    animate(scope.current, { clipPath: EXIT_KEYFRAMES[side] }, { duration: 0.3 });
+  }, [animate, getNeartestSide, scope]);
 
-  const getNeartestSide = e => {
-    const box = e.target.getBoundingClientRect();
-
-    const proximityToLeft = {
-      proximity: Math.abs(box.left - e.clientX),
-      side: 'left'
-    };
-    const proximityToRight = {
-      proximity: Math.abs(box.right - e.clientX),
-      side: 'right'
-    };
-    const proximityToBottom = {
-      proximity: Math.abs(box.bottom - e.clientY),
-      side: 'bottom'
-    };
-    const proximityToTop = {
-      proximity: Math.abs(box.top - e.clientY),
-      side: 'top'
-    };
-
-    const sortedProximity = [proximityToLeft, proximityToRight, proximityToBottom, proximityToTop].sort((a, b) => a.proximity - b.proximity);
-
-    return sortedProximity[0].side;
-  };
+  const darkImageSrc = useMemo(() => `/${image}-dark.svg`, [image]);
+  const lightImageSrc = useMemo(() => `/${image}.svg`, [image]);
 
   return (
     <a
-      onMouseEnter={(e) => {
-        handleMouseEnter(e);
-      }}
-      onMouseLeave={(e) => {
-        handleMouseLeave(e);
-      }}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       href={href} 
       className="relative grid h-20 w-full place-content-center sm:h-28 md:h-44">
       <div>
-        <Image src={`/${image}-dark.svg`} alt={image} width={80} height={80} />
+        <Image src={darkImageSrc} alt={image} width={80} height={80} />
       </div>
-      <div ref={scope} style={{clipPath: BOTTOM_RIGHT_CLIP}} className="absolute inset-0 grid place-content-center bg-neutral-900">
+      <div ref={scope} style={{ clipPath: BOTTOM_RIGHT_CLIP }} className="absolute inset-0 grid place-content-center bg-neutral-900">
         <div className='z-20'>
-          <Image src={`/${image}.svg`} alt={image} width={120} height={120} />
+          <Image src={lightImageSrc} alt={image} width={120} height={120} />
         </div>
       </div>
     </a>
   );
-};
+});
+
+LinkBox.displayName = 'LinkBox';

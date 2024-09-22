@@ -5,6 +5,9 @@
         "indent"           : [1, 2],
         "no-else-return"   : 1,
         "semi"             : [1, "always"],
-        "space-unary-ops"  : 2
+        "space-unary-ops"  : 2,
+        "object-curly-spacing": [2, "always"],
+        "function-paren-newline": [2, "multiline-arguments"],
+        "default-param-last": 2
     }
 }

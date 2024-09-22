@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-const LinkBar = ({title = "", description = "", iconName = "Icon1", companyName = "", year = ""}) => {
+const LinkBar = ({ title = "", description = "", iconName = "Icon1", companyName = "", year = "" }) => {
 
 
   return (
@@ -37,6 +37,9 @@ export const CaseStudiesLinks = () => {
         <LinkBar title="A/B Testing without the pesky vendors" description="Corporate environtment? getting upselled on everything? Let's do something different." iconName="Icon1" companyName="Ria Money Transfer" year="2024" />
       </div>
       <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
+        <LinkBar title="Making a locations APP that works for everyone" description="Whitelabeling an app, embedding capabilities" iconName="Icon7" companyName="Ria Money Transfer" year="2022" />
+      </div>
+      <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
         <LinkBar title="Making your marketing content team's life easier" description="The untold burdens of internationalization" iconName="Icon2" companyName="Ria Money Transfer" year="2022" />
       </div>
       <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
@@ -46,14 +49,12 @@ export const CaseStudiesLinks = () => {
         <LinkBar title="PHP >> React >> PreRender >> NextJS" description="Corporate journey of upgrading tech stack" iconName="Icon4" companyName="Xe.com" year="2021" />
       </div>
       <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
-        <LinkBar title="Making an international public site from scratch" description="An opportunity to use the latest tech to make something great" iconName="Icon5" companyName="Xe.com" year="2021" />
+        <LinkBar title="Making an international public site from scratch" description="An opportunity to use the latest tech to make something great" iconName="Icon5" companyName="Ria Money Transfer" year="2021" />
       </div>
       <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
         <LinkBar title="Stoic Monolith vs a creative UX Team" description="New ideas, concepts, designs, and a new way of working" iconName="Icon6" companyName="WOM" year="2018" />
       </div>
-      <div className="grid grid-cols-1 divide-x divide-neutral-900 h-32">
-        <LinkBar title="Making a locations APP that works for everyone" description="Whitelabeling an app, embedding capabilities" iconName="Icon7" companyName="WOM" year="2018" />
-      </div>
+
     </div>
   );
 };
