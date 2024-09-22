@@ -45,7 +45,16 @@ export const SectionSeparator = () => {
 
   const isInView = useInView(overlay, {once: false});
 
-  const [dimension, setDimension] = useState({width:0, height:0});
+
+  useEffect(() => {
+    const lenis = new Lenis();
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
+    requestAnimationFrame(raf);
+  }, []);
 
 
   const {scrollYProgress} = useScroll({
@@ -53,6 +62,7 @@ export const SectionSeparator = () => {
 
     offset: ['start end', 'end start']
   });
+
 
   const y = useTransform(scrollYProgress, [0, 1], [0, 800 * 2]);
   const y2 = useTransform(scrollYProgress, [0, 1], [0, 800 * 3.3]);
