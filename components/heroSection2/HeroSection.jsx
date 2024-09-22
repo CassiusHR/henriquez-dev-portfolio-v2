@@ -2,22 +2,23 @@
 import { Canvas } from "@react-three/fiber";
 import { Environment, useProgress, Lightformer} from '@react-three/drei';
 import Model from "./Model";
-import {useEffect, useState} from "react";
+import {useEffect, useState, Suspense} from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Scene = () => {
-
   return (
     <Canvas
-      gl={{ antialias: false }}
+      gl={{ antialias: false, powerPreference: "high-performance" }}
       className="bg-[rgb(250,250,250)]" 
       style={{ height: '100vh', width: '100%', touchAction: 'auto !important', pointerEvents: 'none' }}
     >
-      <Model />
-      <ambientLight intensity={0.5} />
-      <spotLight position={[10, 20, 10]} angle={0.15} penumbra={1} />
-      <pointLight position={[-10, -10, -10]} />
-      <Environment preset='city' resolution={512}/>
+      <Suspense fallback={null}>
+        <Model />
+        <ambientLight intensity={0.5} />
+        <spotLight position={[10, 20, 10]} angle={0.15} penumbra={1} />
+        <pointLight position={[-10, -10, -10]} />
+        <Environment preset='city' resolution={256} />
+      </Suspense>
     </Canvas>
   );
 };

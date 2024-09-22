@@ -22,11 +22,11 @@ const images = [
 
 const Column = ({images = [], y = 0, offset = 0, isInView = false}) => {
   return (
-    <motion.div style={{y}} className="relative h-full w-1/3 flex flex-col gap-4">
+    <motion.div style={{y}} className="relative h-full w-1/2 sm:w-1/3 flex flex-col gap-4">
 
       {
         images.map((image, index) => (
-          <div key={index} className={clsx('relative w-full h-full rounded-2xl overflow-hidden my-4 min-h-[200px]', offset == 1 && 'top-[-45%]', offset == 2 && 'top-[-95%]', offset == 3 && 'top-[-45%]')} style={{transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s'}}>
+          <div key={index} className={clsx('relative w-full h-full rounded-2xl overflow-hidden my-4 min-h-[200px] max-h-[200px] sm:min-h-[700px] sm:max-h-[300px]', offset == 1 && 'top-[-25%] sm:top-[-45%]', offset == 2 && 'top-[-55%] sm:top-[-95%]', offset == 3 && 'top-[-25%] sm:top-[-45%]')} style={{transition: 'all 0.9s cubic-bezier(0.17, 0.55, 0.55, 1) 0.8s'}}>
             <Image src={image} alt="image" fill />
           </div>
 
