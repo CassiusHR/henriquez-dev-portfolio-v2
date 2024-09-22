@@ -20,13 +20,13 @@ const ClipPathLinks = () => {
         <LinkBox text="React" href="#" image="react"/>
         <LinkBox text="NextJS" href="#" image="nextjs"/>
       </div>
-      <div className="grid grid-cols-4 divide-x divide-neutral-900">
+      <div className="grid grid-cols-2 sm:grid-cols-4  sm:divide-x divide-neutral-900">
         <LinkBox text="Javascript" href="#" image="javascript"/>
         <LinkBox text="Typescript" href="#" image="typescript"/>
         <LinkBox text="Framer Motion" href="#" image="framer-motion"/>
         <LinkBox text="Tailwind" href="#" image="tailwind"/>  
       </div>
-      <div className="grid grid-cols-3 divide-x divide-neutral-900">
+      <div className="grid grid-cols-2 sm:grid-cols-3 divide-x divide-neutral-900">
         <LinkBox text="Vercel" href="#" image="vercel"/>
         <LinkBox text="Netlify" href="#" image="netlify"/>
         <LinkBox text="Figma" href="#" image="figma"/>
