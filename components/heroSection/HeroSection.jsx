@@ -27,7 +27,7 @@ const HeroSection = () => {
 const PointCircle = () => {
   const ref = useRef();
 
-  useFrame(({clock}) => {
+  useFrame(({ clock }) => {
     ref.current.rotation.z = clock.getElapsedTime() * 0.1;
   });
 
@@ -43,7 +43,7 @@ const PointCircle = () => {
   );
 };
 
-const Point = ({position, color}) => {
+const Point = ({ position, color }) => {
   return (
     <Sphere args={[0.1,2,2]} position={position}>
       <meshStandardMaterial color={color} emissive={color} flatShading={true} emissiveIntensity={0.9} roughness={0.5} />

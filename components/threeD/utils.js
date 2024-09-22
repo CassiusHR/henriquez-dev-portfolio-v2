@@ -41,7 +41,7 @@ const randomFromInterval = (min, max) => {
 
 export const pointsInner = Array.from(
 
-  {length: NUM_POINTS},
+  { length: NUM_POINTS },
   (v,k) => k + 1
 ).map((num) => {
   const ramdomRadius = randomFromInterval(MIN_RADIUS, MAX_RADIUS);

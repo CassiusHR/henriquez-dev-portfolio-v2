@@ -1,8 +1,8 @@
 'use client';
 import { Canvas } from "@react-three/fiber";
-import { Environment, useProgress, Lightformer} from '@react-three/drei';
+import { Environment, useProgress, Lightformer } from '@react-three/drei';
 import Model from "./Model";
-import {useEffect, useState, Suspense} from "react";
+import { useEffect, useState, Suspense } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 
 const Scene = () => {
@@ -66,7 +66,7 @@ const HeroSection = () => {
         )}
       </AnimatePresence>
       <AnimatePresence mode="wait">
-        <motion.div key="canvas" initial={{opacity: 0}} animate={{opacity: 1, transition: {duration: 0.7}}} style={{ height: '100vh', width: '100%' }}>
+        <motion.div key="canvas" initial={{ opacity: 0 }} animate={{ opacity: 1, transition: { duration: 0.7 } }} style={{ height: '100vh', width: '100%' }}>
           <Scene />
         </motion.div>
       </AnimatePresence>
